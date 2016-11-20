@@ -24,7 +24,7 @@ with open('README.md') as markdown_source:
 
 try:
     import pandoc
-    pandoc.core.PANDOC_PATH = 'pandoc'
+    # pandoc.core.PANDOC_PATH = 'pandoc'  # Fix install issue with MacOSX
     # Converts the README.md file to ReST, since PyPI uses ReST for formatting,
     # This allows to have one canonical README file, being the README.md
     doc = pandoc.Document()
