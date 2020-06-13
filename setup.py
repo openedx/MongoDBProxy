@@ -36,6 +36,28 @@ except ImportError:
     # just use the regular README.
     LONG_DESCRIPTION = README_MARKDOWN
 
+def load_requirements(*requirements_paths):
+    """
+    Load all requirements from the specified requirements files.
+    Returns a list of requirement strings.
+    """
+    requirements = set()
+    for path in requirements_paths:
+        with open(path) as reqs:
+            requirements.update(
+                line.split('#')[0].strip() for line in reqs
+                if is_requirement(line.strip())
+            )
+    return list(requirements)
+
+
+def is_requirement(line):
+    """
+    Return True if the requirement line is a package requirement;
+    that is, it is not blank, a comment, a URL, or an included file.
+    """
+    return line and not line.startswith(('-r', '#', '-e', 'git+', '-c'))
+
 setup(
     name='MongoDBProxy',
     py_modules=['mongodb_proxy'],
@@ -50,8 +72,9 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.8',
     ],
     setup_requires=['pyandoc'],
-    install_requires=['pymongo'],
+    install_requires=load_requirements('requirements/base.in'),
     url="https://github.com/arngarden/MongoDBProxy"
 )

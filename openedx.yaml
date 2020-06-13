@@ -2,9 +2,9 @@ owner: bderusha
 supporting_team: devops
 
 oeps:
-    oep-2: false
+    oep-2: true
     oep-7: true
-    oep-18: false
+    oep-18: true
 
 tags:
     - library
