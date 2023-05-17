@@ -14,7 +14,7 @@ Copyright 2013 Gustav Arngarden
    limitations under the License.
 """
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 LONG_DESCRIPTION = None
 README_MARKDOWN = None
@@ -60,15 +60,13 @@ def is_requirement(line):
 setup(
     name='MongoDBProxy',
     py_modules=['mongodb_proxy'],
-    version='0.1.0+edx.2',
+    version='0.2.0',
     description='Proxy around MongoDB connection that automatically handles AutoReconnect exceptions.',
     author='Gustav Arngarden',
     long_description=LONG_DESCRIPTION,
     classifiers=[
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.8',
