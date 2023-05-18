@@ -58,7 +58,7 @@ def is_requirement(line):
     return line and not line.startswith(('-r', '#', '-e', 'git+', '-c'))
 
 setup(
-    name='MongoDBProxy',
+    name='openedx-mongodbproxy',
     py_modules=['mongodb_proxy'],
     version='0.2.0',
     description='Proxy around MongoDB connection that automatically handles AutoReconnect exceptions.',
