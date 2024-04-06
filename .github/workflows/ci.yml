@@ -18,7 +18,7 @@ jobs:
         - '3.8'
         - '3.11'
         - '3.12'
-        toxenv: [testenv, django42]
+        toxenv: [testenv]
 
     steps:
     - uses: actions/checkout@v2
