@@ -83,7 +83,7 @@ class MongoProxy:
         Otherwise just return the attribute.
         """
         item = self.proxied_object[key]
-        if hasattr(item, '__call__'):
+        if hasattr(item, '__call__') or attr.__class__.__name__ in ['Database']:
             return MongoProxy(item, self.wait_time)
         return item
 
@@ -103,7 +103,7 @@ class MongoProxy:
         that handles AutoReconnect exceptions. Otherwise wrap it in a MongoProxy object.
         """
         attr = getattr(self.proxied_object, key)
-        if hasattr(attr, '__call__'):
+        if hasattr(attr, '__call__') or attr.__class__.__name__ in ['Database']:
             attributes_for_class = self.methods_needing_retry.get(self.proxied_object.__class__, [])
             if key in attributes_for_class:
                 return autoretry_read(self.wait_time)(attr)
