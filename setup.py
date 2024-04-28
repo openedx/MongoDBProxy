@@ -60,7 +60,7 @@ def is_requirement(line):
 setup(
     name='openedx-mongodbproxy',
     py_modules=['mongodb_proxy'],
-    version='0.2.0',
+    version='0.2.1',
     description='Proxy around MongoDB connection that automatically handles AutoReconnect exceptions.',
     author='Gustav Arngarden',
     long_description=LONG_DESCRIPTION,
