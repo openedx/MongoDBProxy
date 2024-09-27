@@ -16,24 +16,10 @@ Copyright 2013 Gustav Arngarden
 
 from setuptools import setup
 
-LONG_DESCRIPTION = None
 README_MARKDOWN = None
 
 with open('README.md') as markdown_source:
     README_MARKDOWN = markdown_source.read()
-
-try:
-    import pandoc
-    pandoc.core.PANDOC_PATH = 'pandoc'
-    # Converts the README.md file to ReST, since PyPI uses ReST for formatting,
-    # This allows to have one canonical README file, being the README.md
-    doc = pandoc.Document()
-    doc.markdown = README_MARKDOWN
-    LONG_DESCRIPTION = doc.rst
-except ImportError:
-    # If pandoc isn't installed, e.g. when downloading from pip,
-    # just use the regular README.
-    LONG_DESCRIPTION = README_MARKDOWN
 
 def load_requirements(*requirements_paths):
     """
@@ -60,10 +46,11 @@ def is_requirement(line):
 setup(
     name='openedx-mongodbproxy',
     py_modules=['mongodb_proxy'],
-    version='0.2.1',
+    version='0.2.2',
     description='Proxy around MongoDB connection that automatically handles AutoReconnect exceptions.',
     author='Gustav Arngarden',
-    long_description=LONG_DESCRIPTION,
+    long_description=README_MARKDOWN,
+    long_description_content_type='text/markdown',
     classifiers=[
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
@@ -71,7 +58,6 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.8',
     ],
-    setup_requires=['pyandoc'],
     install_requires=load_requirements('requirements/base.in'),
     url="https://github.com/arngarden/MongoDBProxy"
 )
