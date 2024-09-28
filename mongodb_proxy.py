@@ -17,6 +17,7 @@ Copyright 2013 Gustav Arngarden
 from functools import wraps
 import logging
 import pymongo
+import pymongo.collection
 import time
 
 log = logging.getLogger(__name__)
