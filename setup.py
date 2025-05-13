@@ -46,7 +46,7 @@ def is_requirement(line):
 setup(
     name='openedx-mongodbproxy',
     py_modules=['mongodb_proxy'],
-    version='0.2.2',
+    version='0.3.0',
     description='Proxy around MongoDB connection that automatically handles AutoReconnect exceptions.',
     author='Gustav Arngarden',
     long_description=README_MARKDOWN,
@@ -55,8 +55,8 @@ setup(
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
     ],
     install_requires=load_requirements('requirements/base.in'),
     url="https://github.com/arngarden/MongoDBProxy"

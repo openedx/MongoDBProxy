@@ -20,6 +20,8 @@ import pymongo
 import pymongo.collection
 import time
 
+from pymongo.database import Database
+
 log = logging.getLogger(__name__)
 
 MONGO_METHODS_NEEDING_RETRY = {
@@ -104,7 +106,7 @@ class MongoProxy:
         that handles AutoReconnect exceptions. Otherwise wrap it in a MongoProxy object.
         """
         attr = getattr(self.proxied_object, key)
-        if hasattr(attr, '__call__') or isinstance(attr, pymongo.database.Database):
+        if hasattr(attr, '__call__') or isinstance(attr, Database):
             attributes_for_class = self.methods_needing_retry.get(self.proxied_object.__class__, [])
             if key in attributes_for_class:
                 return autoretry_read(self.wait_time)(attr)
