@@ -1,3 +1,9 @@
+⚠️This Fork of the MongoDBProxy Repository is no longer Maintained by the Open edX community. ⚠️
+
+Most of the capabilities it provides are now built-in to the default Mongo client.
+
+
+
 MongoDBProxy
 ============
 
